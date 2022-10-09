@@ -1,17 +1,25 @@
 package com.winediary.winediary.domain;
 
+import org.springframework.context.annotation.Configuration;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.time.LocalDateTime;
 
 @Entity
-public class Member {
+public class Member extends BaseEntity{
     @Id
-    @Column
+    @GeneratedValue
+    @Column(name = "member_no")
     private Long sn;
 
     @Column
     private String email;
+
+    @Column
+    private String nickName;
 
     @Column
     private String password;
@@ -28,4 +36,6 @@ public class Member {
     @Column
     private String age;
 
+    @Column
+    private LocalDateTime lastLoginDateTime;
 }
