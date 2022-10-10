@@ -26,6 +26,7 @@ public class SecurityConfig {
         return httpSecurity.authorizeRequests()
                 .antMatchers("/", "favicon.ico").permitAll()
                 .antMatchers("/h2-console/**").permitAll()
+                .antMatchers("/swagger-resources/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .csrf().ignoringAntMatchers("/h2-console/**")
