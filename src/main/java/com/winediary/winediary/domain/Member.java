@@ -36,6 +36,34 @@ public class Member extends BaseEntity implements UserDetails {
     @Column
     private String telNo;
 
+    public Long getSn() {
+        return sn;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public String getTelNo() {
+        return telNo;
+    }
+
+    public String getAge() {
+        return age;
+    }
+
+    public LocalDateTime getLastLoginDateTime() {
+        return lastLoginDateTime;
+    }
+
     @Column
     private String age;
 

@@ -1,6 +1,5 @@
 package com.winediary.winediary.config.jwt;
 
-import com.winediary.winediary.domain.MemberRoles;
 import com.winediary.winediary.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -10,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
 @Service
-public class JwtUserDetailService implements UserDetailsService {
+public class JwtUserDetailsService implements UserDetailsService {
 
     private final MemberRepository memberRepository;
 
