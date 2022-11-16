@@ -2,6 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.7.4'
 	id 'io.spring.dependency-management' version '1.0.14.RELEASE'
 	id 'java'
+	id 'jacoco'
 }
 
 group = 'com.winediary'
@@ -17,6 +18,7 @@ configurations {
 repositories {
 	mavenCentral()
 }
+
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.7.4'
@@ -34,6 +36,40 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok:1.18.24'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test:2.7.4'
 	testImplementation 'org.springframework.security:spring-security-test:5.7.3'
+}
+
+jacoco {
+	toolVersion = "0.8.7"
+}
+
+jacocoTestReport {
+	reports {
+		xml.enabled false
+		csv.enabled false
+		html.destination file("${buildDir}/jacocoHtml")
+	}
+}
+
+jacocoTestCoverageVerification {
+	violationRules {
+		rule {
+			element = 'CLASS'
+			limit {
+				counter = 'LINE'
+				value = 'COVEREDRATIO'
+				minimum = 0.8
+			}
+			excludes = [
+			        'com.winediary.winediary.WinediaryApplication',
+					'com.winediary.winediary.config.*',
+					'com.winediary.winediary.domain.*'
+			]
+		}
+	}
+}
+
+test {
+	useJUnitPlatform()
 }
 
 tasks.named('test') {
